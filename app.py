@@ -109,15 +109,15 @@ st.pyplot(fig1)
 
 
 
-st.subheader("Actual vs Predicted Waste (Line Chart)")
+# st.subheader("Actual vs Predicted Waste (Line Chart)")
 
-# สร้าง DataFrame สำหรับ plot
-result_df = pd.DataFrame({
-    "Actual Waste (kg)": y_test.values,
-    "Predicted Waste (kg)": y_pred
-}).reset_index(drop=True)
+# # สร้าง DataFrame สำหรับ plot
+# result_df = pd.DataFrame({
+#     "Actual Waste (kg)": y_test.values,
+#     "Predicted Waste (kg)": y_pred
+# }).reset_index(drop=True)
 
-st.line_chart(result_df)
+# st.line_chart(result_df)
 
 
 st.subheader("Feature Importance (Matplotlib Line Chart)")
@@ -135,3 +135,7 @@ ax2.set_ylabel("Coefficient Value")
 ax2.set_xlabel("Feature")
 
 st.pyplot(fig2)
+
+st.set_page_config(
+    page_title="Streamlit"
+)
