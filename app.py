@@ -106,14 +106,32 @@ ax1.set_ylabel("Predicted Waste (kg)")
 
 st.pyplot(fig1)
 
-# -----------------------------
-# Graph 2: Feature Importance
-# -----------------------------
-st.subheader("Feature Importance")
+
+
+
+st.subheader("Actual vs Predicted Waste (Line Chart)")
+
+# สร้าง DataFrame สำหรับ plot
+result_df = pd.DataFrame({
+    "Actual Waste (kg)": y_test.values,
+    "Predicted Waste (kg)": y_pred
+}).reset_index(drop=True)
+
+st.line_chart(result_df)
+
+
+st.subheader("Feature Importance (Matplotlib Line Chart)")
 
 importance = pd.Series(
     model.coef_,
     index=features
 ).sort_values(ascending=False)
 
-st.bar_chart(importance)
+fig2, ax2 = plt.subplots()
+ax2.plot(importance.values, marker='o')
+ax2.set_xticks(range(len(importance)))
+ax2.set_xticklabels(importance.index, rotation=45)
+ax2.set_ylabel("Coefficient Value")
+ax2.set_xlabel("Feature")
+
+st.pyplot(fig2)
